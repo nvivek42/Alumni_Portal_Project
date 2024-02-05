@@ -1,0 +1,276 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script src="./bootstrap-4.6.2-dist/bootstrap-4.6.2-dist/jquery.js"></script>
+    <script src="./bootstrap-4.6.2-dist/bootstrap-4.6.2-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./bootstrap-4.6.2-dist/bootstrap-4.6.2-dist/css/bootstrap.css">
+
+   <!-- <style>
+        form {
+            font-size: x-large;
+
+        }
+
+        h1 {
+            font-size: xx-large;
+        }
+
+        span {
+            color: red;
+            margin-left: 10px;
+        }
+
+        input[type=button] {
+            background-color: coral;
+        }
+
+        input[type=reset] {
+            background-color: coral;
+        }
+
+        button {
+            
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid brown;
+            border-radius: 5px;
+            color: #fff;
+            background-color: brown;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+        }
+
+        button:hover{
+            background-color: #b99729;
+            border-color: #b97129;
+        }
+
+        
+
+    .inp {
+      padding: 10px;
+      font-size: 14px;
+      border: 2px solid #1e1b1b;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+      
+    }
+
+    /* Focus effect */
+    .inp:hover {
+      border-color: rgb(216, 125, 14);
+      background-color: #c4bfae;
+    }
+
+    h1{
+        text-decoration: underline;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
+   
+    hr{
+        background-color: #1e1b1b;
+    }
+    </style>  -->
+
+</head>
+
+<body style="background-color: burlywood;">
+    <h1 align="center">Registration Form</h1>
+        <hr style="color: black;">
+
+        <form id="myform">
+            <table>
+
+                <tbody><tr>
+                    <td>First Name(Minimum 6 characters) :</td>
+                    <td><input type="text" class="inp" id="fname" name="fname"> <span id="errorFname" focus=""></span></td>
+                </tr>
+
+                <tr>
+                    <td>Last Name :</td>
+                    <td><input type="text" class="inp" name="lname" id="lname" required=""><span id="errorLname"></span></td>
+                </tr>
+
+                <tr>
+                    <td>Email Address :</td>
+                    <td><input type="email" class="inp" name="email" id="email"><span id="errorEmail"></span></td>
+                </tr>
+
+                <tr>
+                    <td>Password : </td>
+                    <td><input type="password" class="inp" name="password" id="password"><span id="errorPassword"></span></td>
+                </tr>
+
+                <tr>
+                    <td>Address : </td>
+                    <td><textarea name="Address" class="inp" id="Address" cols="30" rows="10"></textarea><span id="errorAddress"></span></td>
+                </tr>
+
+                <tr>
+                    <td>Mobile Number :</td>
+                    <td><input type="text" class="inp" name="mob" id="mob"><span id="errorMob"></span></td>
+                </tr>
+
+                <tr>
+                    <td>Gender:</td>
+                    <td><input type="radio" name="gender" value="Male" id="Male"> Male
+                        <input type="radio" name="gender" value="Female" id="Female"> Female<span id="genderError"></span>
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td><br><button type="button" name="btn" id="Submit" value="Submit" onclick="validate(form)">Submit</button>
+                        <button type="reset" name="btn" id="Reset" value="Reset">Reset</button>
+                    </td>
+                </tr>
+                
+
+            </tbody></table>
+            <h1 id="success" style="color:rgb(70, 175, 70);"></h1>
+            <h1 id="data"></h1>
+            <div id="result"></div>
+        </form>
+
+        <script>
+            function validate(form) {
+                //validation for Firstname 
+                let status = true;
+                let fname = document.getElementById("fname").value;
+                var status1 = true, status2 = true, status3 = true;
+                if (fname.length < 6) {
+
+                    document.getElementById("errorFname").innerHTML = "Length should not be less than 6 characters!!!";
+
+                    status1 = false;
+                } else {
+                    status1 = true;
+                }
+                if (fname === "") {
+
+                    document.getElementById("errorFname").innerHTML = "Please enter the name!!!";
+
+                    status2 = false;
+                } else {
+                    status2 = true;
+                }
+
+                let fnameRegex = /[0-9]/
+                if (fnameRegex.test(fname)) {
+                    document.getElementById("errorFname").innerHTML = "Name should contains alphabets only!!!";
+
+                    status3 = false;
+                } else {
+                    status3 = true;
+                }
+
+                if (status1 && status2 && status3) {
+
+                    document.getElementById("errorFname").innerHTML = "";
+                    status = true;
+                }
+                else {
+                    status = false;
+                }
+
+                // validation password
+
+                let password = document.getElementById("password").value;
+
+                if (password.length < 6) {
+                    document.getElementById("errorPassword").innerHTML = "Password length must be greater than 6!!!"
+                    status = false;
+                } else {
+
+                    document.getElementById("errorPassword").innerHTML = "";
+                }
+
+                // validate email
+
+                let email = document.getElementById("email").value;
+                let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                if (!emailRegex.test(email)) {
+                    document.getElementById("errorEmail").innerHTML = "Email must be in the format <b>name@domain.com</b>!!!";
+                    status = false;
+                } else {
+
+                    document.getElementById("errorEmail").style.display = "none";
+                }
+
+                // validate Mobile number
+                let Mobile = document.getElementById("mob").value;
+                let mobRegx2 = /^[a-zA-Z]$/
+                let mobRegex = /^[0-9]{10}$/
+                if (!mobRegex.test(Mobile)) {
+                    document.getElementById("errorMob").innerHTML = "Mobile number should contain only 10 digits !!!";
+                    status = false;
+                } else if (Mobile.trim() === "") {
+
+                    document.getElementById("errorMob").innerHTML = "Mobile number should not be empty!!!";
+
+                } else if (mobRegx2.test(Mobile)) {
+                    document.getElementById("errorMob").innerHTML = "Only numeric values are allowed only!!!"
+                }
+                else {
+                    document.getElementById("errorMob").innerHTML = "";
+                }
+
+                //validate address and lastname
+
+                let lname = document.getElementById("lname").value;
+                let address = document.getElementById("Address").value;
+                if (lname.trim() === "") {
+                    document.getElementById("errorLname").innerHTML = "Enter the lastname!!!";
+                    status = false;
+                } else {
+                    document.getElementById("errorLname").innerHTML = "";
+                }
+
+                if (address.trim() === "") {
+                    document.getElementById("errorAddress").innerHTML = "Enter the address!!!";
+                    status = false;
+                } else {
+                    document.getElementById("errorAddress").innerHTML = "";
+                }
+
+                //validate gender
+                var male = document.getElementById("Male").checked;
+                var female = document.getElementById("Female").checked;
+                console.log(form.gender[0].checked + " " + form.gender[1].checked)
+
+                //  if( document.getElementById("gender") )
+
+
+                if (!male && !female) {
+                    document.getElementById("genderError").innerText = "Select gender!!!"
+                    status = false;
+                } else {
+                    document.getElementById("genderError").innerHTML = "";
+                }
+
+                // clearing form  
+
+
+
+                if (status) {
+                    document.getElementById("success").innerHTML = "Form Submitted Successfully!!!";
+                    document.getElementById("data").innerHTML=`Name=${fname} </br>${lname} </br>Email=${email} </br>Address=${address} </br>Mobile=${Mobile}`;
+                    document.getElementById("myform").reset();
+                }
+
+                document.getElementById("id").focus;
+
+                
+            }
+
+
+        </script>
+
+
+</body></html>

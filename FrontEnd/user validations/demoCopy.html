@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegEx Form</title>
+</head>
+<body>
+    <form id="RegForm"  action="/redirectedpage.html">
+        <table>
+            <tbody><tr>
+                <td>Enter email: </td>
+                <td ><input type="text" name="email" id="email" ><span id="errorEmail" focus=""></span></td>
+            </tr>
+            <tbody><tr>
+                <td>select gender: </td>
+                <td><input type="radio" name="gender" value="Male" id="Male"> Male
+                    <input type="radio" name="gender" value="Female" id="Female">Female <span id="errorGender" focus=""></span></td>
+                </tr>
+            <tr>
+                <td><button type="button" name="nm" id="id" value="Submit" onclick="validateForm(form)">submit</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <script>
+        
+
+        function validateForm(form){
+           
+        let status=false;
+         let email=document.getElementById("email").value;
+         let emailRegEx=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if(email===""){
+                document.getElementById("errorEmail").innerHTML="cannot be empty...";
+            }
+            
+           
+            else if(!emailRegEx.test(email)){
+
+                document.getElementById("errorEmail").innerHTML="enter valid email"
+            }
+            else{
+                status=true;
+            }
+
+
+            var male = document.getElementById("Male").checked;
+            var female = document.getElementById("Female").checked;
+            if (!male && !female) {
+                    document.getElementById("errorGender").innerText = "Select gender!!!"    
+                }
+            else 
+                status=true;
+        }
+
+        document.getElementById('RegForm').addEventListener('submit', function (event) {
+    
+    // Add your validation logic here
+    if (status) {
+        // Valid credentials, allow form submission
+        alert('Login successful');
+        setTimeout(function() {window.location = "http://127.0.0.1:3000/user validations/redirectedpage.html" }); // Replace with the desired URL
+    } else {
+        // Invalid credentials, prevent form submission
+        alert('Invalid username or password');
+        event.preventDefault();
+    }
+});
+
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #age{
+            width: 4em;
+        }
+    </style>
+    <script>
+        //let status=false;
+        function validateEmail(){
+            let email=document.getElementById("email").value;
+            let emailRegEx=/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+            if(email==="" || !emailRegEx.test(email)){
+                document.getElementById("errorEmail").innerHTML="enter valid email";
+            }
+            else
+                return true;
+        }
+        function validateGender(){
+            var Male=document.getElementById("male").checked;
+            var Female=document.getElementById("female").checked;
+            if (!Male && !Female) {
+                    document.getElementById("errorGender").innerText = "Select gender!!!"
+                    return false; }
+            else
+               return true;
+            }
+        function validate(){
+            let flag=validateEmail();
+            let flag1=validateGender();
+                return flag&&flag1;
+        }
+        function a =new URLSearchParams()
+        document.addEventListener('D',function()){}
+    </script>
+</head>
+<body >
+    <div >
+        <h1 align="center">Registration Form</h1>
+        <form id="myForm" onsubmit="return validate()" action="/resultPage.html"></form>
+        <table><tbody>
+            <tr>
+            <td><label for="name">Name: </label></td>
+            <td><input type="text" name="name" id="name" required minlength="3" maxlength="8" autofocus="" placeholder="enter name"><span id=""></span></td>
+            </tr>
+            <tr>
+                <td><label for="em">Email</label></td>
+                <td><input type="email" name="em" id="email" required="" placeholder="Enter email" oninput="validateEmail()"><span id="errorEmail"></span></td>
+            </tr>
+            <tr>
+                <td><label for="address">Address</label></td>
+                <td><textarea name="address" id="address" cols="20" rows="5" placeholder="enter address"></textarea></td>
+            </tr>
+            <tr >
+                <td><label for="age">select age</label></td>
+                <td><input type="number" id="age" min="15"  required><span id="errorAge"></span></td>
+            </tr>
+            <tr>
+                <td><label for="gender">select gender</label></td>
+                <td><input type="radio" id="male">Male
+                <input type="radio" id="female">Female<span id="errorGender"></span></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="submit" name="btn" id="register" value="register">register me</button>
+                    <button type="reset" name="btn" id="cancel" value="cancel">Reset</button>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>

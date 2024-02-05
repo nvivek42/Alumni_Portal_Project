@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get values from the URL parameters
+        const name = getQueryParameter('name');
+        const email = getQueryParameter('em');
+        const age = getQueryParameter('age');
+        const address = getQueryParameter('address');
+        const city = getQueryParameter('city');
+
+        // Display the retrieved values
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('result').innerHTML = `
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Age: ${age}</p>
+                <p>Address: ${address}</p>
+                <p>City: ${city}</p>
+            `;
+        });
+    </script>
+</head>
+<body>
+    <div id="result">
+        <p>Name: null</p>
+        <p>Email: null</p>
+        <p>Age: null</p>
+        <p>Address: null</p>
+        <p>City: null</p>
+    </div>
+</body>
+</html>

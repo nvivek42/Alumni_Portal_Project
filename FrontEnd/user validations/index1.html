@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration page</title>
+</head>
+<body>
+    <h1 align="center">User Registration</h1>
+
+        <form action="registration" id="myform">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td><input type="text" class="inp" id="fanme" name="fname"><span id="errFname" focus=" "></span></td>
+                    </tr>
+                    <td>Last Name</td>
+                        <td><input type="text" class="inp" id="lanme" name="lname"><span id="errFname" focus=" "></span></td>
+                    <tr>
+                        <td>Email Address :</td>
+                        <td><input type="email" class="inp" name="email" id="email"><span id="errorEmail"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Number :</td>
+                        <td><input type="text" class="inp" name="mob" id="mob"><span id="errorMob"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Batch :</td>
+                        <td>
+                        <select>
+                            <option value="SEP">SEP</option>
+                            <option value="MARCH">MARCH</option>
+                        </select>
+                        <select name="batchYear" id="batchYear">
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>PRN</td>
+                        <td><input type="text" class="inp" id="PRN" name="PRN"><span id="errPRN" focus=" "></span></td>
+                    </tr>
+                    <tr>
+                        <td><br><button type="button" name="btn" id="Submit" value="Submit" onclick="validate(form)">Submit</button>
+                            <button type="reset" name="btn" id="Reset" value="Reset">Reset</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 id="success" style="color:rgb(70, 175, 70);"></h1>
+            <h1 id="data"></h1>
+            <div id="result"></div>
+        </form>
+
+        <script>
+            function validate(form){
+                //validation for first
+                let status = true;
+            }
+        </script>
+</body>
+</html>
